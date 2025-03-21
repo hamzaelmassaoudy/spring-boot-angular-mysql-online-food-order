@@ -45,7 +45,7 @@
   <h2>🚀 Installation Steps</h2>
   <ol>
     <li>Clone the repository:
-      <pre>git clone https://github.com/yourusername/Food-Ordering-System-MVC.git</pre>
+      <pre>git clone https://github.com/hamzaelmassaoudy/Food-Ordering-System-MVC.git</pre>
     </li>
     <li>Set up the backend:
       <ul>
