@@ -1,0 +1,69 @@
+<head>
+  <title>SpringFood|Payment  </title>
+</head>
+<div class="body">
+  <br><br><br><br>
+<h1 align="center">SpringFood | CHECKOUT</h1>
+
+  <div class="alert alert-warning" align="center">
+    <strong>Payment Portal</strong>
+  </div>
+
+  <div>
+    <h2 align="center">Payment Details</h2>
+    <h2 align="center">To Pay : {{total}}</h2>
+    <div align="center">
+      <table align="center">
+        <tr>
+          <td><label>Card Number</label></td>
+          <td><input type="text" placeholder="xxxx xxxx xxxx xxxx"
+                      minlength="16"
+                      maxlength="16"
+                      [(ngModel)]="cardNumber"
+                      required="required"
+                      (keyup)="validCard()">
+          </td>
+        </tr>
+        <tr>
+          <td><label>Expiry</label></td>
+          <td>
+            <table>
+              <tr>
+                <td style="min-width: 90px"><input type="number" placeholder="MM" min="1" max="12" required="required" [(ngModel)]="month" (keyup)="validMonth()"></td>
+                <td style="min-width: 90px"><input type="number" placeholder="YY" min="19" max="99" required="required" [(ngModel)]="year" (keyup)="validYear()"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td><label>CVV</label></td>
+          <td>
+            <table>
+              <tr>
+                <td style="min-width: 90px"><input type="number" placeholder="CVV" min="100" max="999" required="required" [(ngModel)]="cvv" (keyup)="validCvv()"></td>
+                <td><img class="question" src="http://pngimg.com/uploads/question_mark/question_mark_PNG49.png"
+                         data-toggle="tooltip" data-placement="right" title="Card CVV Help"></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td><label>Cardholder Name</label></td>
+          <td><input type="text" placeholder="Name" required="required" minlength="4" maxlength="10" [(ngModel)]="nameOnCard" (keyup)="validName()"></td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <td>
+            <button class="bigbutton" routerLink="/success" (click)="changeDB()"><span>Pay</span></button>
+          </td>
+          <td>
+            <button class="bigbutton" routerLink="/menu"><span>Go Back</span></button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+

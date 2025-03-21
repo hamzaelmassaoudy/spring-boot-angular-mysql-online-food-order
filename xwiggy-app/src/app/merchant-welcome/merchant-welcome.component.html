@@ -1,0 +1,36 @@
+<div class="body">
+  <br><br><br>
+  <h1 align="center">SpringFood | HOME</h1>
+  <br><br>
+</div>
+<div class="card align-contents" align="center">
+  <p><img class="card-img-top" style="padding: 0 15px; float: left;" src="../../assets/images/merchant.png" alt="Card image cap"><font style="float: left">Welcome, {{modelMerchant.firstname}}<br> Account Type : Merchant</font></p>
+  <div class="table-responsive panel">
+    <table class="table">
+      <tbody>
+      <tr>
+        <td class="text-success" align="right"><i class="fa fa-user"></i> First Name</td>
+        <td>{{modelMerchant.firstname}}</td>
+      </tr>
+      <tr>
+        <td class="text-success" align="right"><i class="fa fa-user-circle"></i> Last Name</td>
+        <td>{{modelMerchant.lastname}}</td>
+      </tr>
+      <tr>
+        <td class="text-success" align="right"><i class="fa fa-mobile"></i> Mobile Number</td>
+        <td>{{modelMerchant.phone}}</td>
+      </tr>
+      <tr>
+        <td class="text-success" align="right"><i class="fa fa-envelope"></i> E-Mail ID</td>
+        <td>{{modelMerchant.email}}</td>
+      </tr>
+      <tr>
+        <td style="float: right"><button class="bigbutton" routerLink="/home" (click)="clearLocal()"><span>Log Out</span></button></td>
+        <td><button class="bigbutton" routerLink="/merchantMenu"><span>Alter Menu</span></button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+

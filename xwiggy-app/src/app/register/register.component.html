@@ -1,0 +1,201 @@
+<div class="container body">
+  <br><br><br><br>
+  <H1 align="center">SpringFood | Registration</H1>
+  <br><br><br>
+
+  <div class="container" align="center">
+    <div class="row">
+      <div class="offset-3"></div>
+      <div class="col-md-6">
+        <form name="form" #f="ngForm" (ngSubmit)="emailValidation&&phoneValidation&&passwordValidation&&f.form.valid && registerUser()" novalidate class="feedback-form">
+          <div class="container" style="height: 35px;">
+          <div *ngIf="present" class="alert alert-danger alert-box" align="center" style="width: 75%; margin: auto;">
+            <strong>UserName Already Taken!</strong>
+          </div>
+          <div *ngIf="present==false" class="alert alert-success alert-box" align="center" style="width: 75%; margin: auto;">
+            <strong>UserName Available!</strong>
+          </div>
+          </div>
+          <!-- UserName -->
+          <table align="center">
+          <div class="form-group">
+              <tr>
+                <td style="text-align: center"> <label for="username">Username</label></td>
+                <td><input type="text"
+                           id="username"
+                           class="form-control"
+                           name="username"
+                           placeholder="Your Username"
+                           [(ngModel)]="model.username"
+                           #username="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && username.invalid }"
+                           required="required"/></td>
+                <td>
+                  <div class="container" align="center">
+                    <a (click)="usernamePresent()" data-toggle="tooltip" data-placement="right" title="Click to check availability"><img src="../../assets/images/checkAvailability.png" style="height: 25px;width: 25px"></a>
+                  </div>
+                </td>
+
+              </tr>
+          </div>
+          <!-- Password -->
+          <div class="form-group">
+              <tr>
+                <td><label for="password">Password</label></td>
+                <td><input (keyup)="passwordStrength()" type="password"
+                           id="password"
+                           class="form-control"
+                           name="password"
+                           placeholder="Your Password"
+                           [(ngModel)]="model.password"
+                           #password="ngModel"
+                           minlength="8"
+                           maxlength="16"
+                           [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                           required="required"/></td>
+                <td style="width: 58px; height: 35px; vertical-align: bottom" align="center"><a *ngIf="!passwordValidation" class="password" data-toggle="tooltip" data-placement="right" title="Your Password should contain : &#013; 1 special character &#013; 1 Upper Case character &#013; 1 Numeric character &#013; Minumum Length = 8 &#013; Maximum length = 16"><img src="../../assets/images/key.png" style="width: 30px; height: 30px"></a> </td>
+              </tr>
+          </div>
+
+          <!-- First Name -->
+          <div class="form-group">
+
+              <tr>
+                <td><label for="firstname">First name</label></td>
+                <td><input type="text"
+                           id="firstname"
+                           class="form-control"
+                           name="firstname"
+                           placeholder="Your Firstname"
+                           [(ngModel)]="model.firstname"
+                           #firstname="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && firstname.invalid }"
+                           required="required"/></td>
+                <td></td>
+              </tr>
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group">
+              <tr>
+                <td><label for="lastname">Last Name</label></td>
+                <td><input type="text"
+                           id="lastname"
+                           class="form-control"
+                           name="lastname"
+                           placeholder="Your Lastname"
+                           [(ngModel)]="model.lastname"
+                           #lastname="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && lastname.invalid }"
+                           required="required"/></td>
+                <td></td>
+              </tr>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+              <tr>
+                <td><label for="email">Email</label></td>
+                <td><input (keyup)="checkEmail()"
+                           type="text"
+                           id="email"
+                           class="form-control"
+                           name="email"
+                           placeholder="email"
+                           [(ngModel)]="model.email"
+                           #email="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                           required="required"/></td>
+                <td><a *ngIf="!emailValidation" data-toggle="tooltip" data-placement="right" title="Enter a valid Email Address">Not a valid email</a></td>
+              </tr>
+          </div>
+
+          <!-- Address -->
+          <div class="form-group">
+              <tr>
+                <td><label for="address">Address</label></td>
+                <td><input type="text"
+                           id="address"
+                           class="form-control"
+                           name="address"
+                           placeholder="address"
+                           [(ngModel)]="model.address"
+                           #address="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && address.invalid }"
+                           required="required"/></td>
+                <td></td>
+              </tr>
+          </div>
+
+          <!-- Phone -->
+          <div class="form-group">
+              <tr>
+                <td><label for="phone">Phone</label></td>
+                <td><input (keyup)="checkPhone()"
+                           type="text"
+                           id="phone"
+                           class="form-control"
+                           name="phone"
+                           placeholder="phone"
+                           [(ngModel)]="model.phone"
+                           #phone="ngModel"
+                           [ngClass]="{ 'is-invalid': f.submitted && phone.invalid }"
+                           maxlength="10"
+                           minlength="10"
+                           required="required"/></td>
+                <td>
+                  <a *ngIf="!phoneValidation" data-toggle="tooltip" data-placement="right" title="Enter a valid Phone Number">Invalid Phone Number</a>
+                </td>
+              </tr>
+          </div>
+            <div class="form-group">
+              <tr>
+                <td>
+                  <label >Account</label>
+                </td>
+                <td><select class="form-control" [(ngModel)]="options"
+                name="options" id="options">
+                  <option>User</option>
+                  <option>Merchant</option>
+                </select></td>
+              </tr>
+            </div>
+          </table>
+
+          <table align="center" style="padding-right:10%">
+            <tr>
+              <td><button type="submit" class="bigbutton">
+                <span> Register</span></button>
+              </td>
+              <td><button routerLink="/home" class="bigbutton"><span>Home</span></button> </td>
+            </tr>
+          </table>
+
+        </form>
+      </div>
+      <div class="offset-3"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- START CAPTCHA -->
+<!--<form onsubmit="return checkform(this);" class="formmargin">
+  <div class="capbox">
+    &lt;!&ndash;<div id="CaptchaDiv">73493</div>&ndash;&gt;
+    <div id="CaptchaDiv" class="disable-text-selection"><span (copy)="$event.preventDefault()" (cut)="$event.preventDefault()" (paste)="$event.preventDefault()">12345</span></div>
+    <div class="capbox-inner">
+      Type the above number:<br>
+      <input type="hidden" id="txtCaptcha"  placeholder="12345">
+      <input type="text" name="CaptchaInput" id="CaptchaInput" ondrop="return false;" onpaste="return false;"size="15"><br>
+    </div>
+  </div>
+  <br>
+  <br>
+  <input type="submit" value="Test Captcha"><br>
+</form>-->
+<!-- END CAPTCHA -->
+<!--(beforecopy)="$event.preventDefault()" (cut)="$event.preventDefault()" (paste)="$event.preventDefault()" ng-paste="$event.preventDefault()"-->
+
+
+
